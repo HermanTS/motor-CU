@@ -1,0 +1,6 @@
+[submodule ".ext/stm32-cmake"]
+	path = .ext/stm32-cmake
+	url = git@github.com:HermanTS/stm32-cmake.git
+[submodule ".ext/cubeF7"]
+	path = .ext/cubeF7
+	url = git@github.com:STMicroelectronics/STM32CubeF7.git
