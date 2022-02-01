@@ -33,29 +33,29 @@
   */
 #define HAL_MODULE_ENABLED  
 /* #define HAL_ADC_MODULE_ENABLED   */
-/* #define HAL_CAN_MODULE_ENABLED */
+#define HAL_CAN_MODULE_ENABLED
 /* #define HAL_CAN_LEGACY_MODULE_ENABLED */
 /* #define HAL_CEC_MODULE_ENABLED   */
 /* #define HAL_CRC_MODULE_ENABLED   */
 /* #define HAL_CRYP_MODULE_ENABLED   */
-/* #define HAL_DAC_MODULE_ENABLED   */
+#define HAL_DAC_MODULE_ENABLED
 /* #define HAL_DCMI_MODULE_ENABLED  */
 #define HAL_DMA_MODULE_ENABLED
 /* #define HAL_DMA2D_MODULE_ENABLED  */
 /* #define HAL_ETH_MODULE_ENABLED  */
-#define HAL_FLASH_MODULE_ENABLED 
+#define HAL_FLASH_MODULE_ENABLED
 /* #define HAL_NAND_MODULE_ENABLED */
 /* #define HAL_NOR_MODULE_ENABLED */
 /* #define HAL_SRAM_MODULE_ENABLED */
 /* #define HAL_SDRAM_MODULE_ENABLED */
 /* #define HAL_HASH_MODULE_ENABLED   */
 #define HAL_GPIO_MODULE_ENABLED
-#define HAL_I2C_MODULE_ENABLED
+//#define HAL_I2C_MODULE_ENABLED
 /* #define HAL_I2S_MODULE_ENABLED    */
 /* #define HAL_IWDG_MODULE_ENABLED  */
 /* #define HAL_LPTIM_MODULE_ENABLED */
 /* #define HAL_LTDC_MODULE_ENABLED  */
-#define HAL_PWR_MODULE_ENABLED
+//#define HAL_PWR_MODULE_ENABLED
 /* #define HAL_QSPI_MODULE_ENABLED    */
 #define HAL_RCC_MODULE_ENABLED 
 /* #define HAL_RNG_MODULE_ENABLED    */
@@ -64,7 +64,7 @@
 /* #define HAL_SD_MODULE_ENABLED   */
 /* #define HAL_SPDIFRX_MODULE_ENABLED */
 /* #define HAL_SPI_MODULE_ENABLED    */
-/* #define HAL_TIM_MODULE_ENABLED    */
+#define HAL_TIM_MODULE_ENABLED
 #define HAL_UART_MODULE_ENABLED 
 /* #define HAL_USART_MODULE_ENABLED  */
 /* #define HAL_IRDA_MODULE_ENABLED  */
@@ -140,7 +140,7 @@
 #define  ART_ACCELERATOR_ENABLE       1U /* To enable instruction cache and prefetch */
 
 #define  USE_HAL_ADC_REGISTER_CALLBACKS         0U /* ADC register callback disabled       */
-#define  USE_HAL_CAN_REGISTER_CALLBACKS         0U /* CAN register callback disabled       */
+#define  USE_HAL_CAN_REGISTER_CALLBACKS         1U /* CAN register callback disabled       */
 #define  USE_HAL_CEC_REGISTER_CALLBACKS         0U /* CEC register callback disabled       */
 #define  USE_HAL_CRYP_REGISTER_CALLBACKS        0U /* CRYP register callback disabled      */
 #define  USE_HAL_DAC_REGISTER_CALLBACKS         0U /* DAC register callback disabled       */
@@ -173,8 +173,8 @@
 #define  USE_HAL_SPDIFRX_REGISTER_CALLBACKS     0U /* SPDIFRX register callback disabled   */
 #define  USE_HAL_SMBUS_REGISTER_CALLBACKS       0U /* SMBUS register callback disabled     */
 #define  USE_HAL_SPI_REGISTER_CALLBACKS         0U /* SPI register callback disabled       */
-#define  USE_HAL_TIM_REGISTER_CALLBACKS         0U /* TIM register callback disabled       */
-#define  USE_HAL_UART_REGISTER_CALLBACKS        0U /* UART register callback disabled      */
+#define  USE_HAL_TIM_REGISTER_CALLBACKS         1U /* TIM register callback disabled       */
+#define  USE_HAL_UART_REGISTER_CALLBACKS        1U /* UART register callback disabled      */
 #define  USE_HAL_USART_REGISTER_CALLBACKS       0U /* USART register callback disabled     */
 #define  USE_HAL_WWDG_REGISTER_CALLBACKS        0U /* WWDG register callback disabled      */
 
@@ -184,75 +184,6 @@
   *        HAL drivers code
   */
 /* #define USE_FULL_ASSERT    1 */
-
-/* ################## Ethernet peripheral configuration ##################### */
-
-/* Section 1 : Ethernet peripheral configuration */
-
-/* MAC ADDRESS: MAC_ADDR0:MAC_ADDR1:MAC_ADDR2:MAC_ADDR3:MAC_ADDR4:MAC_ADDR5 */
-#define MAC_ADDR0   2U
-#define MAC_ADDR1   0U
-#define MAC_ADDR2   0U
-#define MAC_ADDR3   0U
-#define MAC_ADDR4   0U
-#define MAC_ADDR5   0U
-
-/* Definition of the Ethernet driver buffers size and count */   
-#define ETH_RX_BUF_SIZE                ETH_MAX_PACKET_SIZE /* buffer size for receive               */
-#define ETH_TX_BUF_SIZE                ETH_MAX_PACKET_SIZE /* buffer size for transmit              */
-#define ETH_RXBUFNB                    ((uint32_t)5U)       /* 5 Rx buffers of size ETH_RX_BUF_SIZE  */
-#define ETH_TXBUFNB                    ((uint32_t)5U)       /* 5 Tx buffers of size ETH_TX_BUF_SIZE  */
-
-/* Section 2: PHY configuration section */
-/* LAN8742A PHY Address*/
-#define LAN8742A_PHY_ADDRESS            0x00U
-/* PHY Reset delay these values are based on a 1 ms Systick interrupt*/ 
-#define PHY_RESET_DELAY                 ((uint32_t)0x00000FFFU)
-/* PHY Configuration delay */
-#define PHY_CONFIG_DELAY                ((uint32_t)0x00000FFFU)
-
-#define PHY_READ_TO                     ((uint32_t)0x0000FFFFU)
-#define PHY_WRITE_TO                    ((uint32_t)0x0000FFFFU)
-
-/* Section 3: Common PHY Registers */
-
-#define PHY_BCR                         ((uint16_t)0x00U)    /*!< Transceiver Basic Control Register   */
-#define PHY_BSR                         ((uint16_t)0x01U)    /*!< Transceiver Basic Status Register    */
- 
-#define PHY_RESET                       ((uint16_t)0x8000U)  /*!< PHY Reset */
-#define PHY_LOOPBACK                    ((uint16_t)0x4000U)  /*!< Select loop-back mode */
-#define PHY_FULLDUPLEX_100M             ((uint16_t)0x2100U)  /*!< Set the full-duplex mode at 100 Mb/s */
-#define PHY_HALFDUPLEX_100M             ((uint16_t)0x2000U)  /*!< Set the half-duplex mode at 100 Mb/s */
-#define PHY_FULLDUPLEX_10M              ((uint16_t)0x0100U)  /*!< Set the full-duplex mode at 10 Mb/s  */
-#define PHY_HALFDUPLEX_10M              ((uint16_t)0x0000U)  /*!< Set the half-duplex mode at 10 Mb/s  */
-#define PHY_AUTONEGOTIATION             ((uint16_t)0x1000U)  /*!< Enable auto-negotiation function     */
-#define PHY_RESTART_AUTONEGOTIATION     ((uint16_t)0x0200U)  /*!< Restart auto-negotiation function    */
-#define PHY_POWERDOWN                   ((uint16_t)0x0800U)  /*!< Select the power down mode           */
-#define PHY_ISOLATE                     ((uint16_t)0x0400U)  /*!< Isolate PHY from MII                 */
-
-#define PHY_AUTONEGO_COMPLETE           ((uint16_t)0x0020U)  /*!< Auto-Negotiation process completed   */
-#define PHY_LINKED_STATUS               ((uint16_t)0x0004U)  /*!< Valid link established               */
-#define PHY_JABBER_DETECTION            ((uint16_t)0x0002U)  /*!< Jabber condition detected            */
-  
-/* Section 4: Extended PHY Registers */
-
-#define PHY_SR                          ((uint16_t)0x1FU)    /*!< PHY special control/ status register Offset     */
-
-#define PHY_SPEED_STATUS                ((uint16_t)0x0004U)  /*!< PHY Speed mask                                  */
-#define PHY_DUPLEX_STATUS               ((uint16_t)0x0010U)  /*!< PHY Duplex mask                                 */
-
-
-#define PHY_ISFR                        ((uint16_t)0x1DU)    /*!< PHY Interrupt Source Flag register Offset       */
-#define PHY_ISFR_INT4                   ((uint16_t)0x0010U)  /*!< PHY Link down inturrupt                         */   
-
-/* ################## SPI peripheral configuration ########################## */
-
-/* CRC FEATURE: Use to activate CRC feature inside HAL SPI Driver
-* Activated: CRC code is present inside driver
-* Deactivated: CRC code cleaned from driver
-*/
-
-#define USE_SPI_CRC                     1U
 
 /* Includes ------------------------------------------------------------------*/
 /**
